@@ -3,22 +3,27 @@
 <head>
   <title>Mitube</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<!-- show flash messages -->
-<div class="container">
-  <% flash.each do |key, value| %>
+  <!-- show flash messages -->
+  <div class="container">
+    <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       <%= value %>
     </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-<%= yield %>
+  <%= yield %>
 
+<!-- makes google iframe -->
+<!-- make sure below yield so html exists when referenced -->
+  <script src="https://www.google.com/jsapi"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>
